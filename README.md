@@ -1,3 +1,3 @@
 # ValorantAccountChecker
 small c# application for viewing VALORANT account statistics: Name,Card,MMR,hystory of match etc...
-![](https://sun9-72.userapi.com/impg/5BQnzT48VYVieGgLu0mXzM0y-0WusmtNNzMHeQ/YBXCQVWofXM.jpg?size=450x760&quality=96&sign=97a0e9505c3cb962ec576245172e9d44&type=album)
+![](https://sun9-63.userapi.com/impg/ohr7lGl87Y4sPgP81jXQ1vP6Tc9GQftgrJshCA/q7MzgeD_OcU.jpg?size=450x760&quality=96&sign=3392f1dbec88802a408e7cfeeb03413e&type=album)
