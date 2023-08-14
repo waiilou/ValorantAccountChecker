@@ -1,0 +1,214 @@
+﻿<Window x:Class="VALXAML.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+
+        mc:Ignorable="d"
+        Title="ValorantAPI" Height="760" Width="450"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{x:Null}"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <materialDesign:Card  Background="#FF32333D">
+            <StackPanel Name="Stackpanel">
+                <materialDesign:Card  HorizontalAlignment="Center" VerticalAlignment="Top" Width="450" Height="45" 
+                                 Background="#FF27272F" Foreground="#FFC1C1C4" FontSize="16" FontWeight="Bold" >
+                    <Grid>
+                        <Image Name="img" Margin="0 0 0 0" Width="45" Height="45" Source="/Resources/logo_transparent.png"/>
+                        <Button Width="38" Content="" Height="38" Margin="206,4,206,3" Background="{x:Null}" Foreground="#FFF23B40" FontSize="30" Click="Button_Click">
+                            <Button.BorderBrush>
+                                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                    <GradientStop Color="#FFF23B40" Offset="1"/>
+                                    <GradientStop Color="Black" Offset="0"/>
+                                </LinearGradientBrush>
+                            </Button.BorderBrush>
+                        </Button>
+                    </Grid>
+                </materialDesign:Card>
+
+                <TextBlock FontSize="18" HorizontalAlignment="Center" 
+                           VerticalAlignment="Center" FontWeight="Light"
+                           Text="Valorant Account Checker" Foreground="#c1c1bc"/>
+                <TextBlock FontSize="10" HorizontalAlignment="Center" 
+                           VerticalAlignment="Center" FontWeight="Light"
+                           Text="by waiilou" Foreground="#c1c1bc"/>
+                <Grid Margin="0 90 0 0" x:Name="Grid1">
+                    <TextBox Margin="-100 0 0 0" x:Name="txtUsername" Width="150" FontSize="18"
+                         materialDesign:HintAssist.Hint="Username" BorderThickness="2"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}"  SelectionTextBrush="#FF27272F" SelectionBrush="#FFE54251" CaretBrush="#FFE54251"/>
+                    <TextBlock FontSize="22" HorizontalAlignment="Left" VerticalAlignment="Center" FontWeight="SemiBold" Text="#" Foreground="#f23b40" Margin="253,0,0,0"/>
+                    <TextBox  Margin="160 0 0 0" x:Name="txtTag" Width="75" FontSize="18"
+                         materialDesign:HintAssist.Hint="Tag" BorderThickness="2"
+                         BorderBrush="{DynamicResource MaterialDesignDivider}"  SelectionTextBrush="#FF27272F" SelectionBrush="#FFE54251" CaretBrush="#FFE54251" UndoLimit="100"/>
+
+                </Grid>
+                <Grid Name="API" Margin="0 15 0 0 " Width="300" >
+
+                    <RadioButton x:Name="NA" Width="40"  Foreground="#f23b40" FontWeight="UltraLight" Margin="75 0 0 0" Background="#FFF23B40" BorderBrush="#FFF23B40">NA</RadioButton>
+                    <RadioButton x:Name="EU"  Width="40"  Foreground="#f23b40" FontWeight="UltraLight" Margin="225 0 0 0" Background="#FFF23B40" BorderBrush="#FFF23B40">EU</RadioButton>
+                    <RadioButton x:Name="KR"  Width="40" Foreground="#f23b40" FontWeight="UltraLight" Margin="-75 0 0 0" Background="#FFF23B40" BorderBrush="#FFF23B40">KR</RadioButton>
+                    <RadioButton x:Name="AP" Width="40"   Foreground="#f23b40" FontWeight="UltraLight" Margin="-225 0 0 0" Background="#FFF23B40" BorderBrush="#FFF23B40">AP</RadioButton>
+                </Grid>
+                <Button Margin="0,15,0,0" Background="#FFF23B40" Foreground="Black" Content="CHECK"
+                        FontSize="20" FontWeight="Light" BorderBrush="Transparent" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="16,0,16,4" Click="btnButton_Click"/>
+                <Grid Height="475" Name="lastGame">
+                    <materialDesign:Card Background="#FF25252C" HorizontalAlignment="Center" VerticalAlignment="Top" Height="128" Width="450" Margin="0,10,0,0"/>
+                    <Image Name="imgRank" Stretch="Uniform" Width="128" Height="128" Margin="10,10,312,337"/>
+                    <TextBlock Name="txtProfile" Margin="145,0,0,431" FontSize="23" Text="" Foreground="#f23b40" FontWeight="Black" VerticalAlignment="Bottom"/>
+                    <TextBlock Name ="txtRank" Margin="145,0,100,401" Height="30" FontSize="20" Text="" Foreground="#f23b40" FontWeight="Black" VerticalAlignment="Bottom"/>
+                    <!--<Image Name="imgRank2" Height="48" Width="48" Stretch="Uniform" Margin="140,60,262,367"/> -->
+                    <ProgressBar x:Name="progressMMR" HorizontalAlignment="Left" Height="15" Margin="144,79,0,0" VerticalAlignment="Top" Width="130" Background="#FF353841" BorderBrush="Black" Foreground="#FFF23B40"/>
+                    <TextBlock Name="txtCurrentRankInTier" Margin="191,79,0,0" Text="" Foreground="Black" FontWeight="UltraBold" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="11"/>
+                    <Image Name="wideImg" Margin="0,140,0,251" Stretch="UniformToFill" Height="84" Width="450" />
+                    <StackPanel Margin="0 225 0 0">
+                        <materialDesign:Card Background="#FF25252C" Height="50">
+                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Name="image1" Width="300" Margin="-100,0,0,0" Stretch="UniformToFill" Source="Resources\fracture.png" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Image.OpacityMask>
+                                        <LinearGradientBrush EndPoint="0.88,0">
+                                            <GradientStop Color="Black" Offset="0.5"/>
+                                            <GradientStop Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Image.OpacityMask>
+                                </Image>
+                                <TextBlock Name="map1" FontSize="28" FontWeight="SemiBold" Foreground="White" IsEnabled="False" Text="Fracture"
+                   Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0" Width="150"/>
+
+                                <TextBlock Name="elo1" FontSize="28" FontWeight="SemiBold" Foreground="White" IsEnabled="False" Text="+15"
+                   Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 0" Width="50"/>
+
+                                <TextBlock Name="date1" FontSize="11" FontWeight="SemiBold" Foreground="#c1c1bc" IsEnabled="False" Text="blalbalbalblablalbablalbalbalblablalbalblb"
+                   Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin=" 10 20 0 0" Width="180"/>
+                            </Grid>
+                        </materialDesign:Card>
+
+                        <materialDesign:Card Background="#FF27272F" Height="50">
+                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Name="image2" Width="300" Margin="-100,0,0,0" Stretch="UniformToFill" Source="Resources\ascent.png" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Image.OpacityMask>
+                                        <LinearGradientBrush EndPoint="0.88,0">
+                                            <GradientStop Color="Black" Offset="0.5"/>
+                                            <GradientStop Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Image.OpacityMask>
+                                </Image>
+                                <TextBlock Name="map2" FontSize="28" FontWeight="SemiBold" Foreground="White" IsEnabled="False" Text="Ascent"
+                   Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0" Width="150"/>
+
+                                <TextBlock Name="elo2" FontSize="28" FontWeight="SemiBold" Foreground="White" IsEnabled="False" Text="+15"
+                   Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 0" Width="50"/>
+
+                                <TextBlock Name="date2" FontSize="11" FontWeight="SemiBold" Foreground="#c1c1bc" IsEnabled="False" Text="blalbalbalblablalbablalbalbalblablalbalblb"
+                   Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin=" 10 20 0 0" Width="180"/>
+                            </Grid>
+                        </materialDesign:Card>
+
+                        <materialDesign:Card Background="#FF25252C" Height="50">
+                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Name="image3" Width="300" Margin="-100,0,0,0" Stretch="UniformToFill" Source="Resources\ascent.png" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Image.OpacityMask>
+                                        <LinearGradientBrush EndPoint="0.88,0">
+                                            <GradientStop Color="Black" Offset="0.5"/>
+                                            <GradientStop Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Image.OpacityMask>
+                                </Image>
+                                <TextBlock Name="map3" FontSize="28" FontWeight="SemiBold" Foreground="White" IsEnabled="False" Text="Ascent"
+                   Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0" Width="150"/>
+
+                                <TextBlock Name="elo3" FontSize="28" FontWeight="SemiBold" Foreground="White" IsEnabled="False" Text="+15"
+                   Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 0" Width="50"/>
+
+                                <TextBlock Name="date3" FontSize="11" FontWeight="SemiBold" Foreground="#c1c1bc" IsEnabled="False" Text="blalbalbalblablalbablalbalbalblablalbalblb"
+                   Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin=" 10 20 0 0" Width="180"/>
+                            </Grid>
+                        </materialDesign:Card>
+
+                        <materialDesign:Card Background="#FF27272F" Height="50">
+                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Name="image4" Width="300" Margin="-100,0,0,0" Stretch="UniformToFill" Source="Resources\ascent.png" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Image.OpacityMask>
+                                        <LinearGradientBrush EndPoint="0.88,0">
+                                            <GradientStop Color="Black" Offset="0.5"/>
+                                            <GradientStop Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Image.OpacityMask>
+                                </Image>
+                                <TextBlock Name="map4" FontSize="28" FontWeight="SemiBold" Foreground="White" IsEnabled="False" Text="Ascent"
+                   Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0" Width="150"/>
+
+                                <TextBlock Name="elo4" FontSize="28" FontWeight="SemiBold" Foreground="White" IsEnabled="False" Text="+15"
+                   Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 0" Width="50"/>
+
+                                <TextBlock Name="date4" FontSize="11" FontWeight="SemiBold" Foreground="#c1c1bc" IsEnabled="False" Text="blalbalbalblablalbablalbalbalblablalbalblb"
+                   Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin=" 10 20 0 0" Width="180"/>
+                            </Grid>
+                        </materialDesign:Card>
+                        <materialDesign:Card Background="#FF25252C" Height="50">
+                            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Image Name="image5" Width="300" Margin="-100,0,0,0" Stretch="UniformToFill" Source="Resources\ascent.png" Grid.ColumnSpan="2" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <Image.OpacityMask>
+                                        <LinearGradientBrush EndPoint="0.88,0">
+                                            <GradientStop Color="Black" Offset="0.5"/>
+                                            <GradientStop Offset="1"/>
+                                        </LinearGradientBrush>
+                                    </Image.OpacityMask>
+                                </Image>
+                                <TextBlock Name="map5" FontSize="28" FontWeight="SemiBold" Foreground="White" IsEnabled="False" Text="Ascent"
+                   Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 0" Width="150"/>
+
+                                <TextBlock Name="elo5" FontSize="28" FontWeight="SemiBold" Foreground="White" IsEnabled="False" Text="+15"
+                   Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10 0" Width="50"/>
+
+                                <TextBlock Name="date5" FontSize="11" FontWeight="SemiBold" Foreground="#c1c1bc" IsEnabled="False" Text="blalbalbalblablalbablalbalbalblablalbalblb"
+                   Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Margin=" 10 20 0 0" Width="180"/>
+                            </Grid>
+                        </materialDesign:Card>
+
+
+
+
+                    </StackPanel>
+                    <TextBlock x:Name="txtLast5" Margin="0,195,0,250"  Width="Auto" Height="30" FontSize="20" Text="  Последние соревновательные матчи:" Foreground="#f23b40" FontWeight="Black" Background="{DynamicResource AttentionToActionBrush}"/>
+                </Grid>
+            </StackPanel>
+
+        </materialDesign:Card>
+
+
+    </Grid>
+</Window>
